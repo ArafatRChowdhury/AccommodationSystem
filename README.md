@@ -1,4 +1,4 @@
 # AccommodationSystem
-OOSD Group Java Project
+Object Oriented Systems Development Assessment Cedar Woods Accommodation System
 
-in the Cedar Woods Accommodation System straight up "booking it" and by it, haha well, let's just say. My accommodation.
+[Documents](AccommodationSystem/docs)
