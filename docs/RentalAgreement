@@ -1,0 +1,43 @@
+public class RentalAgreement {
+   private String customer;
+   private boolean breakfast;
+   private int checkinDate;
+   private int numberofGuests;
+   private int numberofNights;
+    
+public RentalAgreement(boolean breakfast, int checkinDate, int numberofGuests, int numberofNights){
+    this.breakfast = breakfast;
+    this.checkinDate = checkinDate;
+    this.numberofGuests = numberofGuests;
+    this.numberofNights = numberofNights;
+}    
+    public boolean getbreakfast(){
+        return this.breakfast;
+        }
+    public int getcheckinDate(){
+        return this.checkinDate;
+        }
+    public int getnumberofGuests(){
+        return this.numberofGuests;
+        }
+    public int getnumberofNights(){
+        return this.numberofNights;
+        }
+    public boolean setbreakfast(boolean nBreakfast){
+        return this.breakfast = nBreakfast;
+        }
+    public int setcheckinDate(int startDate){
+        return this.checkinDate = startDate;
+        }
+    public int setnumberofGuests(int npeople){
+        return this.numberofGuests = npeople;
+        }
+    public int setnumberofNights(int nNights){
+        return this.numberofNights = nNights;
+        }
+    
+    
+  public static void main(String[] args) {
+
+    } 
+}
