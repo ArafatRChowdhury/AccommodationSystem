@@ -1,0 +1,22 @@
+
+  public class Geodesic_Dome extends Accommodation {
+    public Geodesic_Dome(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,String cleaningStatus,boolean breakfast){
+        super(accommodationName,accommodationDescription,guests, costperNight,occupancy,availability,cleaningStatus,breakfast);
+    }
+     @Override   
+     public String getaccommodationName(){
+            return "Geodesic Dome";
+            }
+     @Override
+     public String getaccommodationDescription(){
+         return"Description in progress";
+         }
+     @Override
+     public int getGuests(){
+         return 2;
+         }
+     @Override
+     public int getCost(){
+         return 120;
+         }
+} 
