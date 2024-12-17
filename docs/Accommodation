@@ -46,19 +46,19 @@ public Accommodation(String accommodationName, String accommodationDescription, 
     public String getcleaningStatus(){
         return this.cleaningStatus;
         }
-    public int setGuests(int nGuests){
-        return this.guests = nGuests;
+    public int setGuests(int guests){
+        return this.guests = guests;
         //Make a loop to limit the amount of guests for each accommodation
         }
-    public boolean setOccupancy(boolean amountPeople){
-        return this.occupancy = amountPeople;
+    public boolean setOccupancy(boolean occupancy){
+        return this.occupancy = occupancy;
         }
-    public boolean setAvailability(boolean status){
-        return this.availability = status;
+    public boolean setAvailability(boolean availability){
+        return this.availability = availability;
         }
     //Make a set cleaning status object
-    public boolean setBreakfast(boolean dailybreakfast){
-        return this.breakfast = dailybreakfast;
+    public boolean setBreakfast(boolean breakfast){
+        return this.breakfast = breakfast;
         }
     public class checkIn extends RentalAgreement{
         public checkIn(boolean breakfast, int checkinDate, int numberofGuests, int numberofNights){
