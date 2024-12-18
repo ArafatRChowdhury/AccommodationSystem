@@ -12,9 +12,15 @@
          return"Description in progress";
          }
      @Override
-     public int getGuests(){
-         return 2;
+     public int setGuests(int guests){
+         if(guests<1 || guests>3){
+             System.out.println("Guests entered have to be between 1-3");
          }
+         else{
+             System.out.println("Guests entered correctly");
+         }
+         return 0;
+     }
      @Override
      public int getCost(){
          return 120;
