@@ -1,24 +1,19 @@
-public enum CleaningStatus {
-    CLEAN("Clean"),
-    DIRTY("Dirty"),
-    MAINTENANCE("Maintenance");
-
-    private String cleaningStatus;
-
-    CleaningStatus(String cleaningStatus) {
-        this.cleaningStatus = cleaningStatus;
+public class CleaningStatus {
+    public enum Status {
+        CLEAN,
+        MAINTENANCE,
+        DIRTY;
     }
 
-    public String getCleaningStatus() {
-        return cleaningStatus;
-    }
-
-    public void updateCleaningStatus(String newCleaningStatus) {
-        this.cleaningStatus = newCleaningStatus;
-    }
     public static void main(String[] args) {
+        Status currentStatus = Status.CLEAN;
 
-    } 
+        switch (currentStatus) {
+            case CLEAN -> System.out.println("The accommodation is clean.");
+            case MAINTENANCE -> System.out.println("The accommodation is in maintenance.");
+            case DIRTY -> System.out.println("The accommodation is dirty.");
+        }
+    }
 }
 
 /*Code made by Jaime for the Change Cleaning Status Class
