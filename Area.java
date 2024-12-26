@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 
 public class Area {
-    private final String areaName;
-    private final String areaDescription;
-    private final ArrayList<Accomodation> accomodation;
-    private final CleaningStatus cleaningStatus;
+    private String areaName;
+    private String areaDescription;
+    private ArrayList<Accommodation> accommodations;
+    private CleaningStatus.Status cleaningStatus;
 
-    public Area(String areaName, String areaDescription, CleaningStatus cleaningStatus) {
+    public Area(String areaName, String areaDescription, CleaningStatus.Status cleaningStatus) {
         this.areaName = areaName;
         this.areaDescription = areaDescription;
-        this.accomodation = new ArrayList<>();
+        this.accommodations = new ArrayList<>();
         this.cleaningStatus = cleaningStatus;
     }
 
-    public ArrayList<Accomodation> getaccomType() {
-        return this.accomodation;
+    public ArrayList<Accommodation> getAccommodations() {
+        return this.accommodations;
     }
 
     public String getAreaName() {
@@ -25,14 +25,35 @@ public class Area {
         return this.areaDescription;
     }
 
-    public boolean getdailyBreakfast() {
-        return this.dailybreakfast;
+    public boolean hasDailyBreakfast() {
+        for (Accommodation accommodation : this.accommodations) {
+            if (accommodation.getBreakfast()) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public CleaningStatus getCleaningStatus(){
+    public CleaningStatus.Status getCleaningStatus() {
         return this.cleaningStatus;
     }
-    public static void main(String[] args) {
 
-    } 
+    public static void main(String[] args) {
+        Area area = new Area("Downtown", "A bustling city center.", CleaningStatus.Status.CLEAN);
+        System.out.println("Area Name: " + area.getAreaName());
+        System.out.println("Description: " + area.getAreaDescription());
+        System.out.println("Cleaning Status: " + area.getCleaningStatus());
+    }
+}
+
+class CleaningStatus {
+    public enum Status {
+        CLEAN, MAINTENANCE, DIRTY;
+    }
+}
+
+class Accommodation {
+    public boolean getBreakfast() {
+        return true;
+    }
 }
