@@ -18,7 +18,7 @@ public class Airstream extends Accommodation {
         }
         else{
             System.out.println("Guests entered correctly");
-        }
+            }
         return 0;
      }
      @Override
