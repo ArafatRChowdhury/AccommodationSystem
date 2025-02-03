@@ -2,7 +2,7 @@
 public class Accommodation {
   private String accommodationName;
   private String accommodationDescription;
-  int guests;
+  private int guests;
   private int costperNight;
   private boolean occupancy;
   private boolean availability;
