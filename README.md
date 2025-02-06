@@ -1,4 +1,5 @@
 # AccommodationSystem
-OOSD Assessment Cedar Woods Accommodation System
 
-[Documents](docs)
+#### OOSD Assessment Cedar Woods Accommodation System
+
+[Project Documents](docs)
