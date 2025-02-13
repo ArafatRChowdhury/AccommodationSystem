@@ -41,7 +41,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -208,22 +207,12 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <CheckBox fx:id="BreakfastsRequired" layoutX="14.0" layoutY="456.0" mnemonicParsing="false" text="Breakfasts Required" />
-                        <Button fx:id="CheckInButton" layoutX="14.0" layoutY="494.0" mnemonicParsing="false" text="Check In" />
-                        <Button fx:id="CheckOutButton" layoutX="206.0" layoutY="494.0" mnemonicParsing="false" text="Check Out" />
+                        <CheckBox fx:id="BreakfastsRequired" layoutX="14.0" layoutY="456.0" mnemonicParsing="false" onAction="#BreakfastsCheckBoxOnAction" text="Breakfasts Required" />
+                        <Button fx:id="CheckInButton" layoutX="14.0" layoutY="494.0" mnemonicParsing="false" onAction="#CheckInOnAction" text="Check In" />
+                        <Button fx:id="CheckOutButton" layoutX="206.0" layoutY="494.0" mnemonicParsing="false" onAction="#CheckOutOnAction" text="Check Out" />
                      </children>
                   </AnchorPane>
-                  <TableView fx:id="AccommodationTable" prefHeight="596.0" prefWidth="598.0">
-                     <columns>
-                        <TableColumn prefWidth="33.33335781097412" text="No." />
-                        <TableColumn prefWidth="147.33327865600586" text="Accomm. Type" />
-                        <TableColumn prefWidth="75.0" text="Occupancy" />
-                        <TableColumn prefWidth="75.0" text="Availability" />
-                        <TableColumn prefWidth="75.0" text="Status" />
-                        <TableColumn prefWidth="75.0" text="Guests" />
-                        <TableColumn prefWidth="75.0" text="Breakfast" />
-                     </columns>
-                  </TableView>
+                  <TableView fx:id="AccommodationTable" prefHeight="596.0" prefWidth="598.0" />
               </items>
             </SplitPane>
       </children>
