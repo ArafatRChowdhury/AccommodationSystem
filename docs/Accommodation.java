@@ -1,4 +1,3 @@
-
 public class Accommodation {
   private String accommodationName;
   private String accommodationDescription;
@@ -21,10 +20,10 @@ public Accommodation(String accommodationName, String accommodationDescription, 
     this.breakfast = breakfast;
     this.area = area;
 }
-    public String getaccommodationName(){
+    public String getAccommodationName(){
         return "Accommodation not found";
         }
-    public String getaccommodationDescription(){
+    public String getAccommodationDescription(){
         return "Accommodation description not found";
         }
     public int getGuests(){
@@ -39,10 +38,10 @@ public Accommodation(String accommodationName, String accommodationDescription, 
     public boolean getAvailability(){
         return availability;
         }
-    public boolean getbreakfast(){
+    public boolean getBreakfast(){
         return breakfast;
         }
-    public String getcleaningStatus(){
+    public String getCleaningStatus(){
            return cleaningStatus;
         }
     public int setGuests(int guests){
@@ -56,7 +55,7 @@ public Accommodation(String accommodationName, String accommodationDescription, 
         return this.availability = availability;
         }
     //Make a set cleaning status object
-    public String setcleaningStatus(String cleaningStatus){
+    public String setCleaningStatus(String cleaningStatus){
         return this.cleaningStatus = cleaningStatus;
     }
     public boolean setBreakfast(boolean breakfast){
@@ -71,8 +70,5 @@ public Accommodation(String accommodationName, String accommodationDescription, 
         return area;
     }
     //Make a check out class to check out the customer from the system
-    public static void main(String[] args) {
-
-    }   
-}
+    
 }
