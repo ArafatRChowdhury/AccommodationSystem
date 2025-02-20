@@ -1,14 +1,13 @@
-
 public class Cabin extends Accommodation {
     public Cabin(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,String cleaningStatus,boolean breakfast){
         super(accommodationName,accommodationDescription,guests, costperNight,occupancy,availability,cleaningStatus,breakfast);
     }
      @Override   
-     public String getaccommodationName(){
+     public String getAccommodationName(){
             return "Cabin";
             }
      @Override
-     public String getaccommodationDescription(){
+     public String getAccommodationDescription(){
          return"Description in progress";
          }
      @Override
@@ -26,4 +25,3 @@ public class Cabin extends Accommodation {
          return 160;
          }
 }
-
