@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Area {
     private String areaName;
     private String areaDescription;
@@ -26,7 +27,9 @@ public class Area {
     }
 
     public boolean hasDailyBreakfast() {
-        for (Accommodation accommodation : this.accommodations) {
+        
+        
+        for (Accommodation accommodation : accommodations) {
             if (accommodation.getBreakfast()) {
                 return true;
             }
@@ -38,22 +41,4 @@ public class Area {
         return this.cleaningStatus;
     }
 
-    public static void main(String[] args) {
-        Area area = new Area("Downtown", "A bustling city center.", CleaningStatus.Status.CLEAN);
-        System.out.println("Area Name: " + area.getAreaName());
-        System.out.println("Description: " + area.getAreaDescription());
-        System.out.println("Cleaning Status: " + area.getCleaningStatus());
-    }
-}
-
-class CleaningStatus {
-    public enum Status {
-        CLEAN, MAINTENANCE, DIRTY;
-    }
-}
-
-class Accommodation {
-    public boolean getBreakfast() {
-        return true;
-    }
 }
