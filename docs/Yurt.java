@@ -1,14 +1,13 @@
-
-  public class Yurt extends Accommodation {
+public class Yurt extends Accommodation {
     public Yurt(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,String cleaningStatus,boolean breakfast){
         super(accommodationName,accommodationDescription,guests, costperNight,occupancy,availability,cleaningStatus,breakfast);
     }
      @Override   
-     public String getaccommodationName(){
+     public String getAccommodationName(){
             return "Yurt";
             }
      @Override
-     public String getaccommodationDescription(){
+     public String getAccommodationDescription(){
          return"Description in progress";
          }
      @Override
