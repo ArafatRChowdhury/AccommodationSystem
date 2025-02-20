@@ -4,11 +4,11 @@ public class Airstream extends Accommodation {
         super(accommodationName,accommodationDescription,guests, costperNight,occupancy,availability,cleaningStatus,breakfast);
     }
      @Override   
-     public String getaccommodationName(){
+     public String getAccommodationName(){
             return "Airstream";
             }
      @Override
-     public String getaccommodationDescription(){
+     public String getAccommodationDescription(){
          return"Description in progress";
          }
      @Override
