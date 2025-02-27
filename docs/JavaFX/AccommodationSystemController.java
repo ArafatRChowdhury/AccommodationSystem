@@ -1,5 +1,8 @@
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +24,7 @@ public class AccommodationSystemController implements Initializable {
     @FXML
     private Label AreaText;
     @FXML
-    private ChoiceBox<?> AreaComboBox;
+    private ChoiceBox<Area> AreaComboBox;
     @FXML
     private Text AreaDescription;
     @FXML
@@ -86,15 +89,34 @@ public class AccommodationSystemController implements Initializable {
     private Button CheckOutButton;
     @FXML
     private TableView<?> AccommodationTable;
+    
+    private ObservableList<Area> areaData = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        CedarWoodsAccommodationSystem cedarWoodsAccommodationSystem = CedarWoodsAccommodationSystem.getInstance();
+        ArrayList<Area> zones = cedarWoodsAccommodationSystem.getAreas();
+        
+        for (int i = 0; i < zones.size(); i++) {
+            areaData.add(zones.get(i));
+        }
+        
+        AreaComboBox.setItems(areaData);
+        AreaComboBox.setValue(areaData.get(0));
+        AreaComboBox.setOnAction(this::AreaComboBoxOnAction);
     }    
 
+    private void AreaComboBoxOnAction(ActionEvent event) {
+        Area area = AreaComboBox.getValue();
+        
+        System.out.println("Area selected: " + area);
+        
+        AreaDescription.setText(area.getAreaDescription());
+    }
+    
     @FXML
     private void BreakfastsCheckBoxOnAction(ActionEvent event) {
     }
