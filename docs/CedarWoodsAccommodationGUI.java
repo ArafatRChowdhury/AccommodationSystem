@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 
-public class CedarWoodsAccommodationSystem extends Application {
+public class CedarWoodsAccommodationGUI extends Application {
     
     private ArrayList<Accommodation> accommodations;
     
