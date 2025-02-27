@@ -2,16 +2,14 @@ import java.util.ArrayList;
 
 
 public class Area {
-    private String areaName;
-    private String areaDescription;
-    private ArrayList<Accommodation> accommodations;
-    private CleaningStatus.Status cleaningStatus;
+    protected String areaName;
+    protected String areaDescription;
+    protected ArrayList<Accommodation> accommodations;
 
-    public Area(String areaName, String areaDescription, CleaningStatus.Status cleaningStatus) {
+    public Area(String areaName, String areaDescription) {
         this.areaName = areaName;
         this.areaDescription = areaDescription;
         this.accommodations = new ArrayList<>();
-        this.cleaningStatus = cleaningStatus;
     }
 
     public ArrayList<Accommodation> getAccommodations() {
@@ -36,9 +34,14 @@ public class Area {
         }
         return false;
     }
-
-    public CleaningStatus.Status getCleaningStatus() {
-        return this.cleaningStatus;
+    
+    @Override
+    public String toString() {
+        return areaName;
     }
+    
+    /*public CleaningStatus.Status getCleaningStatus() {
+        return this.cleaningStatus;
+    }*/
 
 }
