@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class CedarWoodsAccommodationGUI extends Application {
     
-    private ArrayList<Accommodation> accommodations;
-    
     @Override
     public void start(Stage primaryStage)
             throws IOException
