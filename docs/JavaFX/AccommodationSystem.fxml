@@ -212,7 +212,7 @@
                         <HBox layoutX="12.0" layoutY="427.0" prefHeight="30.0" prefWidth="300.0">
                            <children>
                               <Label text="Cleaning Status" />
-                              <ChoiceBox prefWidth="150.0" />
+                              <ChoiceBox fx:id="cleaningStatusChoiceBox" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <Button fx:id="cleaningStatusButton" layoutX="12.0" layoutY="457.0" mnemonicParsing="false" text="Update Cleaning Status" />
