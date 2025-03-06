@@ -1,12 +1,14 @@
+package groupproject.accommodationsystem;
+
 public class Accommodation {
   private String accommodationName;
   private String accommodationDescription;
-  private int guests;
+  private Integer guests;
   private int costperNight;
   private boolean occupancy;
   private boolean availability;
   private String cleaningStatus;
-  private boolean breakfast;
+  private Boolean breakfast;
   private String area;
     
 public Accommodation(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,String cleaningStatus,boolean breakfast){
@@ -21,12 +23,12 @@ public Accommodation(String accommodationName, String accommodationDescription, 
     this.area = area;
 }
     public String getAccommodationName(){
-        return "Accommodation not found";
+        return accommodationName;
         }
     public String getAccommodationDescription(){
-        return "Accommodation description not found";
+        return accommodationDescription;
         }
-    public int getGuests(){
+    public Integer getGuests(){
         return guests;
         }
     public int getCost(){
@@ -38,7 +40,7 @@ public Accommodation(String accommodationName, String accommodationDescription, 
     public boolean getAvailability(){
         return availability;
         }
-    public boolean getBreakfast(){
+    public Boolean getBreakfast(){
         return breakfast;
         }
     public String getCleaningStatus(){
@@ -58,7 +60,7 @@ public Accommodation(String accommodationName, String accommodationDescription, 
     public String setCleaningStatus(String cleaningStatus){
         return this.cleaningStatus = cleaningStatus;
     }
-    public boolean setBreakfast(boolean breakfast){
+    public Boolean setBreakfast(boolean breakfast){
         return this.breakfast = breakfast;
         }
     public class checkIn extends RentalAgreement{

@@ -1,4 +1,4 @@
-
+package groupproject.accommodationsystem;
 public class RentalAgreement {
    private String customer;
    private boolean breakfast;

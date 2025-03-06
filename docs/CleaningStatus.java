@@ -1,8 +1,10 @@
+package groupproject.accommodationsystem;
 public class CleaningStatus {
     public enum Status {
         CLEAN,
         MAINTENANCE,
         DIRTY;
+        
     }
 
     public static void main(String[] args) {

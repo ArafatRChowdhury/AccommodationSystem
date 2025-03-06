@@ -1,3 +1,5 @@
+package groupproject.accommodationsystem;
+
 import java.util.ArrayList;
 
 
@@ -12,6 +14,7 @@ public class Area {
         this.accommodations = new ArrayList<>();
     }
 
+    
     public ArrayList<Accommodation> getAccommodations() {
         return this.accommodations;
     }
@@ -23,7 +26,24 @@ public class Area {
     public String getAreaDescription() {
         return this.areaDescription;
     }
-
+    
+         public void addAccommodation(Accommodation accommodation)
+    {
+        accommodations.add(accommodation);
+    }
+    
+    public int getNumBreakfasts()
+    {
+        // TODO: You will have to implement this method
+        return 0;
+    }
+    
+    public int getNumRequireCleaning()
+    {
+        // TODO: You will have to implement this method
+        return 0;        
+    }
+    
     public boolean hasDailyBreakfast() {
         
         

@@ -1,4 +1,4 @@
-
+package groupproject.accommodationsystem;
 public class Airstream extends Accommodation {
     public Airstream(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,String cleaningStatus,boolean breakfast){
         super(accommodationName,accommodationDescription,guests, costperNight,occupancy,availability,cleaningStatus,breakfast);

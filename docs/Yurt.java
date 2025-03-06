@@ -1,3 +1,4 @@
+package groupproject.accommodationsystem;
 public class Yurt extends Accommodation {
     public Yurt(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,String cleaningStatus,boolean breakfast){
         super(accommodationName,accommodationDescription,guests, costperNight,occupancy,availability,cleaningStatus,breakfast);

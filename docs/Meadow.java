@@ -1,3 +1,4 @@
+package groupproject.accommodationsystem;
 public class Meadow extends Area {
     public Meadow(String areaName,String areaDescription){
             super(areaName, areaDescription);
