@@ -160,56 +160,62 @@
                            </children></VBox>
                         <VBox layoutX="4.0" layoutY="248.0" prefHeight="83.0" prefWidth="315.0">
                            <children>
-                              <Label fx:id="AccomodationDescription" alignment="TOP_LEFT" prefHeight="83.0" prefWidth="315.0" text="Placeholder accommodation description" textAlignment="JUSTIFY" />
+                              <VBox prefHeight="200.0" prefWidth="315.0">
+                                 <children>
+                                    <Label fx:id="AccommodationReceptionTitle" text="Accommodation Reception">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox prefHeight="15.0" prefWidth="315.0">
+                                       <children>
+                                          <Label fx:id="FirstNameText" text="First Name" />
+                                          <TextField fx:id="FirstNameField" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="15.0" prefWidth="315.0">
+                                       <children>
+                                          <Label fx:id="LastNameText" text="Last Name" />
+                                          <TextField fx:id="LastNameField" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="15.0" prefWidth="315.0">
+                                       <children>
+                                          <Label fx:id="TeleNumText" text="Telephone No." />
+                                          <TextField fx:id="TeleNumField" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="15.0" prefWidth="315.0">
+                                       <children>
+                                          <Label fx:id="GuestsText" text="Guests" />
+                                          <TextField fx:id="GuestsField" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="15.0" prefWidth="315.0">
+                                       <children>
+                                          <Label fx:id="CheckInDateText" text="Check-in Date" />
+                                          <TextField fx:id="CheckInDateField" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="15.0" prefWidth="315.0">
+                                       <children>
+                                          <Label fx:id="NightsText" text="Nights" />
+                                          <TextField fx:id="NightsField" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
                            </children></VBox>
-                        <VBox layoutX="4.0" layoutY="264.0" prefHeight="200.0" prefWidth="315.0">
+                        <CheckBox fx:id="BreakfastsRequired" layoutX="12.0" layoutY="523.0" mnemonicParsing="false" onAction="#BreakfastsCheckBoxOnAction" text="Breakfasts Required" />
+                        <Button fx:id="CheckInButton" layoutX="14.0" layoutY="556.0" mnemonicParsing="false" onAction="#CheckInOnAction" text="Check In" />
+                        <Button fx:id="CheckOutButton" layoutX="210.0" layoutY="556.0" mnemonicParsing="false" onAction="#CheckOutOnAction" text="Check Out" />
+                        <HBox layoutX="12.0" layoutY="427.0" prefHeight="30.0" prefWidth="300.0">
                            <children>
-                              <Label fx:id="AccommodationReceptionTitle" text="Accommodation Reception">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <HBox prefHeight="15.0" prefWidth="315.0">
-                                 <children>
-                                    <Label fx:id="FirstNameText" text="First Name" />
-                                    <TextField fx:id="FirstNameField" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="15.0" prefWidth="315.0">
-                                 <children>
-                                    <Label fx:id="LastNameText" text="Last Name" />
-                                    <TextField fx:id="LastNameField" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="15.0" prefWidth="315.0">
-                                 <children>
-                                    <Label fx:id="TeleNumText" text="Telephone No." />
-                                    <TextField fx:id="TeleNumField" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="15.0" prefWidth="315.0">
-                                 <children>
-                                    <Label fx:id="GuestsText" text="Guests" />
-                                    <TextField fx:id="GuestsField" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="15.0" prefWidth="315.0">
-                                 <children>
-                                    <Label fx:id="CheckInDateText" text="Check-in Date" />
-                                    <TextField fx:id="CheckInDateField" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="15.0" prefWidth="315.0">
-                                 <children>
-                                    <Label fx:id="NightsText" text="Nights" />
-                                    <TextField fx:id="NightsField" />
-                                 </children>
-                              </HBox>
+                              <Label text="Cleaning Status" />
+                              <ChoiceBox prefWidth="150.0" />
                            </children>
-                        </VBox>
-                        <CheckBox fx:id="BreakfastsRequired" layoutX="14.0" layoutY="456.0" mnemonicParsing="false" onAction="#BreakfastsCheckBoxOnAction" text="Breakfasts Required" />
-                        <Button fx:id="CheckInButton" layoutX="14.0" layoutY="494.0" mnemonicParsing="false" onAction="#CheckInOnAction" text="Check In" />
-                        <Button fx:id="CheckOutButton" layoutX="206.0" layoutY="494.0" mnemonicParsing="false" onAction="#CheckOutOnAction" text="Check Out" />
+                        </HBox>
+                        <Button fx:id="cleaningStatusButton" layoutX="12.0" layoutY="457.0" mnemonicParsing="false" text="Update Cleaning Status" />
                      </children>
                   </AnchorPane>
                   <TableView fx:id="AccommodationTable" prefHeight="596.0" prefWidth="598.0" />
