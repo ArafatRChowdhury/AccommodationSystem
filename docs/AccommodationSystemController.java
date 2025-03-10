@@ -102,11 +102,15 @@ public class AccommodationSystemController implements Initializable {
     @FXML
     private TextField txtAccommType;
     @FXML
+    private ChoiceBox<CleaningStatus.Status> cleaningStatusChoiceBox;
+    @FXML
     private TableView<AccommodationRow> AccommodationTable;
     
     private ObservableList<Area> areaData = FXCollections.observableArrayList();
     
     private ObservableList<AccommodationRow> tableData = FXCollections.observableArrayList();
+    
+    
 
     /**
      * Initializes the controller class.
@@ -115,6 +119,10 @@ public class AccommodationSystemController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         CedarWoodsAccommodationSystem cedarWoodsAccommodationSystem = CedarWoodsAccommodationSystem.getInstance();
         ArrayList<Area> zones = cedarWoodsAccommodationSystem.getAreas();
+        ObservableList<CleaningStatus.Status> cleaningStatusOptions = FXCollections.observableArrayList(CleaningStatus.Status.values());
+        cleaningStatusChoiceBox.setItems(cleaningStatusOptions);
+        cleaningStatusChoiceBox.setValue(CleaningStatus.Status.CLEAN); 
+
         
         for (int i = 0; i < zones.size(); i++) {
             areaData.add(zones.get(i));
@@ -204,11 +212,13 @@ public class AccommodationSystemController implements Initializable {
         int numBreakfasts = area.getNumBreakfasts();
         int numRequireCleaning = area.getNumRequireCleaning();
         
+        
         // Set the text fields to display the values
         BreakfastsNumberField.setText(Integer.toString(numBreakfasts));
         CleaningNumberField.setText(Integer.toString(numRequireCleaning)); 
+        
     }
-       
+    
     private void AreaComboBoxOnAction(ActionEvent event) {
         Area area = AreaComboBox.getValue();
         
