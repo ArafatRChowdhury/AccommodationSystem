@@ -7,11 +7,11 @@ public class Accommodation {
   private int costperNight;
   private boolean occupancy;
   private boolean availability;
-  private String cleaningStatus;
+  private CleaningStatus.Status cleaningStatus;
   private Boolean breakfast;
   private String area;
     
-public Accommodation(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,String cleaningStatus,boolean breakfast){
+public Accommodation(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,CleaningStatus.Status cleaningStatus,boolean breakfast){
     this.accommodationName=accommodationName;
     this.accommodationDescription=accommodationDescription;
     this.guests = guests;
@@ -43,7 +43,7 @@ public Accommodation(String accommodationName, String accommodationDescription, 
     public Boolean getBreakfast(){
         return breakfast;
         }
-    public String getCleaningStatus(){
+    public CleaningStatus.Status getCleaningStatus(){
            return cleaningStatus;
         }
     public int setGuests(int guests){
@@ -57,8 +57,9 @@ public Accommodation(String accommodationName, String accommodationDescription, 
         return this.availability = availability;
         }
     //Make a set cleaning status object
-    public String setCleaningStatus(String cleaningStatus){
-        return this.cleaningStatus = cleaningStatus;
+    public void setCleaningStatus(CleaningStatus.Status cleaningStatus) {
+    this.cleaningStatus = cleaningStatus;
+    System.out.println("Cleaning status updated to: " + this.cleaningStatus);
     }
     public Boolean setBreakfast(boolean breakfast){
         return this.breakfast = breakfast;
@@ -68,6 +69,10 @@ public Accommodation(String accommodationName, String accommodationDescription, 
             super(breakfast,checkinDate, numberofGuests,numberofNights);
         }
     }
+   public boolean needsCleaning() {
+    return cleaningStatus != CleaningStatus.Status.CLEAN;
+    }
+
     public String area(){
         return area;
     }

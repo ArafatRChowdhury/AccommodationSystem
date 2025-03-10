@@ -239,15 +239,52 @@ public class AccommodationSystemController implements Initializable {
     } else {
         PricePerNightField.setText("£N/A"); // If no accommodations exist in the area
     }
-}
-
+    }
+    
+    
     
     @FXML
-    private void BreakfastsCheckBoxOnAction(ActionEvent event) {
+    public void BreakfastsCheckBoxOnAction(ActionEvent event) {
+    AccommodationRow selectedAccommodation = AccommodationTable.getSelectionModel().getSelectedItem();
+    if (selectedAccommodation != null) {
+        boolean isBreakfastChecked = BreakfastsRequired.isSelected();
+        selectedAccommodation.getAccommodation().setBreakfast(isBreakfastChecked);
+        
+        // Refresh the table to show the updated value without modifying the count
+        AccommodationTable.refresh();
     }
+} 
+    
+    @FXML
+    public void CleaningStatusButtonOnAction(ActionEvent event) {
+    // Retrieve selected accommodation
+    AccommodationRow selectedAccommodation = AccommodationTable.getSelectionModel().getSelectedItem();
+    if (selectedAccommodation == null) {
+        System.out.println("No accommodation selected.");
+        return;
+    }
+    
+    // Get selected cleaning status from the choice box
+    CleaningStatus.Status selectedStatus = cleaningStatusChoiceBox.getValue();
+    if (selectedStatus == null) {
+        System.out.println("No cleaning status selected.");
+        return;
+    }
+    
+    // Update accommodation cleaning status
+    Accommodation accommodation = selectedAccommodation.getAccommodation();
+    System.out.println("Before update: " + accommodation.getCleaningStatus());  // Check current status
+    accommodation.setCleaningStatus(selectedStatus);
+    System.out.println("After update: " + accommodation.getCleaningStatus());  // Check if it's actually updated
+
+    // Refresh table to show updated status
+    AccommodationTable.refresh();
+}
+
 
     @FXML
     private void CheckInOnAction(ActionEvent event) {
+        
     }
 
     @FXML

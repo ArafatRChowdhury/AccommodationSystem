@@ -1,7 +1,7 @@
 package groupproject.accommodationsystem;
 
 public class Cabin extends Accommodation {
-    public Cabin(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,String cleaningStatus,boolean breakfast){
+    public Cabin(String accommodationName, String accommodationDescription, int guests, int costperNight, boolean occupancy,boolean availability,CleaningStatus.Status cleaningStatus,boolean breakfast){
         super(accommodationName,accommodationDescription,guests, costperNight,occupancy,availability,cleaningStatus,breakfast);
     }
      @Override   

@@ -39,7 +39,7 @@ public class AccommodationRow {
     
     public String getStatus() {
         // Assumes Accommodation has a method getStatus()
-        return accommodation.getCleaningStatus();
+        return accommodation.getCleaningStatus().name();
     }
     
     public String getGuest() {

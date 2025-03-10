@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class CedarWoodsAccommodationSystem {
     private ArrayList<Area> areas;
+    private ArrayList<CleaningStatus> status;
     private static CedarWoodsAccommodationSystem instance = null;
     
     protected CedarWoodsAccommodationSystem() {
@@ -28,34 +29,29 @@ public class CedarWoodsAccommodationSystem {
             instance.addArea(lakeview);
             instance.addArea(meadow);
             instance.addArea(woodland);
-            
-            CleaningStatus.Status CleanStatus = CleaningStatus.Status.CLEAN;
-            CleaningStatus.Status MainStatus = CleaningStatus.Status.MAINTENANCE;
-            CleaningStatus.Status DirtyStatus = CleaningStatus.Status.DIRTY;
-            
-            
+                
             for (int cabinNo = 0; cabinNo<4; cabinNo++)
             {
-                Accommodation cabin = new Accommodation("Room " + (cabinNo + 1), "Cabin",0,160,false,true,CleanStatus.name(),false);
+                Accommodation cabin = new Accommodation("Room " + (cabinNo + 1), "Cabin",0,160,false,true,CleaningStatus.Status.CLEAN,false);
                 hilltop.addAccommodation(cabin);
             }
             
             for (int geodesicDomeNo = 0; geodesicDomeNo<2; geodesicDomeNo++)
             {
-                Accommodation geodesicDome = new Accommodation("Room " +(geodesicDomeNo+1),"Geodesic Dome",0,120,false,true,CleanStatus.name(),false);
+                Accommodation geodesicDome = new Accommodation("Room " +(geodesicDomeNo+1),"Geodesic Dome",0,120,false,true,CleaningStatus.Status.CLEAN,false);
                 woodland.addAccommodation(geodesicDome);
             }
             
             for (int yurtNo = 0; yurtNo<2; yurtNo++)
             {
-                Accommodation yurt = new Accommodation("Room " + (yurtNo+1),"Yurt",0,110,false,true,CleanStatus.name(),false);
+                Accommodation yurt = new Accommodation("Room " + (yurtNo+1),"Yurt",0,110,false,true,CleaningStatus.Status.CLEAN,false);
                 meadow.addAccommodation(yurt);
                 
             }
 
             for (int airstreamNo = 0; airstreamNo<4; airstreamNo++)
             {
-                Accommodation airstream = new Accommodation("Room " + (airstreamNo+1),"Airstream",0,180,false,true,CleanStatus.name(),false);
+                Accommodation airstream = new Accommodation("Room " + (airstreamNo+1),"Airstream",0,180,false,true,CleaningStatus.Status.CLEAN,false);
                 lakeview.addAccommodation(airstream);
             }             
         }
@@ -69,5 +65,8 @@ public class CedarWoodsAccommodationSystem {
     
     public ArrayList<Area> getAreas(){
         return areas;
+    }
+    public ArrayList<CleaningStatus> getStatus(){
+        return status;
     }
 }
