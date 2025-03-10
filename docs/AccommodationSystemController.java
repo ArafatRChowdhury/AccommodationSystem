@@ -134,6 +134,8 @@ public class AccommodationSystemController implements Initializable {
         
         AccommodationTable.setEditable(false);
         
+        
+        
         TableColumn accommNoCol = new TableColumn("Accomm No");
         accommNoCol.setMinWidth(50);
         
@@ -220,16 +222,25 @@ public class AccommodationSystemController implements Initializable {
     }
     
     private void AreaComboBoxOnAction(ActionEvent event) {
-        Area area = AreaComboBox.getValue();
-        
-        System.out.println("Area selected: " + area);
-        
-        AreaDescription.setText(area.getAreaDescription());
-        
-        showAreaStatistics(area);
-        
-        populateTable(area);
+    Area area = AreaComboBox.getValue();
+    
+    System.out.println("Area selected: " + area);
+    
+    AreaDescription.setText(area.getAreaDescription());
+    
+    showAreaStatistics(area);
+    
+    populateTable(area);
+
+    // New: Show Price Per Night
+    if (!area.getAccommodations().isEmpty()) {
+        int pricePerNight = area.getAccommodations().get(0).getCost(); // Get cost from first accommodation
+        PricePerNightField.setText(String.format("£%d", pricePerNight)); // Update price field
+    } else {
+        PricePerNightField.setText("£N/A"); // If no accommodations exist in the area
     }
+}
+
     
     @FXML
     private void BreakfastsCheckBoxOnAction(ActionEvent event) {
