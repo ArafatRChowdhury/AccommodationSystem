@@ -208,18 +208,44 @@ public class AccommodationSystemController implements Initializable {
         AccommodationTable.setItems(tableData);
     }
     
-    private void showAreaStatistics(Area area)
-    {
-        // TODO: Implement these methods
-        int numBreakfasts = area.getNumBreakfasts();
-        int numRequireCleaning = area.getNumRequireCleaning();
-        
-        
-        // Set the text fields to display the values
-        BreakfastsNumberField.setText(Integer.toString(numBreakfasts));
-        CleaningNumberField.setText(Integer.toString(numRequireCleaning)); 
-        
+    private void showAreaStatistics(Area area) {
+    int numBreakfasts = area.getNumBreakfasts();
+    int numRequireCleaning = area.getNumRequireCleaning();
+
+    // Get the first accommodation type in the area (assuming all accommodations in an area are the same type)
+    String accommodationType = "";
+    int fixedAccommodates = 0;
+
+    if (!area.getAccommodations().isEmpty()) {
+        Accommodation firstAccommodation = area.getAccommodations().get(0);
+        accommodationType = firstAccommodation.getAccommodationDescription();
+
+        // Assign fixed guest values based on accommodation type
+        switch (accommodationType.toLowerCase()) {
+            case "cabin":
+                fixedAccommodates = 4;
+                break;
+            case "geodesic dome":
+                fixedAccommodates = 2;
+                break;
+            case "yurt":
+                fixedAccommodates = 2;
+                break;
+            case "airstream":
+                fixedAccommodates = 4;
+                break;
+            default:
+                fixedAccommodates = 0; // Default in case of an unknown type
+                break;
+        }
     }
+
+    // Set text fields
+    BreakfastsNumberField.setText(Integer.toString(numBreakfasts));
+    CleaningNumberField.setText(Integer.toString(numRequireCleaning));
+    AccomodatesField.setText(Integer.toString(fixedAccommodates)); // Fixed value displayed
+}
+
     
     private void AreaComboBoxOnAction(ActionEvent event) {
     Area area = AreaComboBox.getValue();
@@ -279,7 +305,7 @@ public class AccommodationSystemController implements Initializable {
 
     // Refresh table to show updated status
     AccommodationTable.refresh();
-}
+    }
 
 
     @FXML
