@@ -32,17 +32,25 @@ public class Area {
         accommodations.add(accommodation);
     }
     
-    public int getNumBreakfasts()
-    {
-        // TODO: You will have to implement this method
-        return 0;
+    public int getNumBreakfasts() {
+        int count = 0;
+        for (Accommodation accommodation : accommodations) {
+            if (accommodation.getBreakfast()) {  // Assuming getBreakfast() returns true if breakfast is required
+                count++;
+        }
+    }
+    return count;
     }
     
-    public int getNumRequireCleaning()
-    {
-        // TODO: You will have to implement this method
-        return 0;        
+    public int getNumRequireCleaning() {
+        int count = 0;
+        for (Accommodation accommodation : accommodations) {
+        if (accommodation.needsCleaning()) {  // Assuming needsCleaning() is a method in Accommodation
+            count++;
+        }
     }
+    return count;
+}
     
     public boolean hasDailyBreakfast() {
         
