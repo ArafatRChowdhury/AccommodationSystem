@@ -49,7 +49,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="624.0" prefWidth="1098.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="624.0" prefWidth="1098.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupproject.accommodationsystem.AccommodationSystemController">
   <children>
     <MenuBar prefHeight="0.0" prefWidth="579.0" VBox.vgrow="NEVER">
       <menus>
@@ -134,13 +134,13 @@
                                     <HBox prefHeight="15.0" prefWidth="315.0">
                                        <children>
                                           <Label fx:id="AccomTypeText" text="Accom. Type" />
-                                          <TextField fx:id="AccomTypeField" />
+                                          <TextField fx:id="txtAccommType" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="15.0" prefWidth="315.0">
                                        <children>
                                           <Label fx:id="AccomNumText" text="Accom. Num" />
-                                          <TextField fx:id="AccomNumField" />
+                                          <TextField fx:id="txtAccommNumber" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="15.0" prefWidth="315.0">
@@ -215,7 +215,7 @@
                               <ChoiceBox fx:id="cleaningStatusChoiceBox" prefWidth="150.0" />
                            </children>
                         </HBox>
-                        <Button fx:id="cleaningStatusButton" layoutX="12.0" layoutY="457.0" mnemonicParsing="false" text="Update Cleaning Status" />
+                        <Button fx:id="cleaningStatusButton" layoutX="12.0" layoutY="457.0" mnemonicParsing="false" onAction="#CleaningStatusButtonOnAction" text="Update Cleaning Status" />
                      </children>
                   </AnchorPane>
                   <TableView fx:id="AccommodationTable" prefHeight="596.0" prefWidth="598.0" />
