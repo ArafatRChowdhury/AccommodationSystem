@@ -6,7 +6,7 @@ public class RentalAgreement {
    private int numberofGuests;
    private int numberofNights;
     
-public RentalAgreement(boolean breakfast, int checkinDate, int numberofGuests, int numberofNights){
+public RentalAgreement(Customer customer, boolean breakfast, int checkinDate, int numberofGuests, int numberofNights){
     this.breakfast = breakfast;
     this.checkinDate = checkinDate;
     this.numberofGuests = numberofGuests;
