@@ -82,7 +82,11 @@ public class Accommodation {
         }
         return 0;
      }
-
+    
+    public void resetGuests() {
+        this.guests = 0;
+    }
+    
     public void setOccupancy(boolean occupancy) {
         this.occupancy = occupancy;
     }
