@@ -206,7 +206,7 @@ private void populateTable(Area area) {
         AccommodationRow accommodationRow = new AccommodationRow(
             accommodation.getAccommodationName(),
             accommodation.getAccommodationDescription(),
-            accommodation.getCustomer() != null ? accommodation.getCustomer().getLastName() + accommodation.getCustomer().getFirstName() + " " : "No customer",
+            accommodation.getCustomer() != null ? accommodation.getCustomer().getFirstName() + " " + accommodation.getCustomer().getLastName() : "No customer"
             accommodation
         );
 
