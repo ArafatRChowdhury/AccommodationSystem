@@ -1,12 +1,12 @@
-package cedarwoodsaccommodationsystem.gui;
+package groupproject.accommodationsystem;
         
-import cedarwoodsaccommodationsystem.model.Accommodation;
-import cedarwoodsaccommodationsystem.model.AccommodationRow;
-import cedarwoodsaccommodationsystem.model.Area;
-import cedarwoodsaccommodationsystem.model.CedarWoodsAccommodationSystem;
-import cedarwoodsaccommodationsystem.model.CleaningStatus;
-import cedarwoodsaccommodationsystem.model.Customer;
-import cedarwoodsaccommodationsystem.model.RentalAgreement;
+import groupproject.accommodationsystem.Accommodation;
+import groupproject.accommodationsystem.AccommodationRow;
+import groupproject.accommodationsystem.Area;
+import groupproject.accommodationsystem.CedarWoodsAccommodationSystem;
+import groupproject.accommodationsystem.CleaningStatus;
+import groupproject.accommodationsystem.Customer;
+import groupproject.accommodationsystem.RentalAgreement;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -186,13 +186,38 @@ public class AccommodationSystemController implements Initializable {
     }    
     
     private void accommodationSelected(AccommodationRow selectedAccommodation) {
-    // Example: Print selected accommodation details
-    System.out.println("Selected Accommodation Number: " + selectedAccommodation.getAccommodationNumber());
-    System.out.println("Selected Accommodation Type: " + selectedAccommodation.getAccommodationType());
-
-    // Example: Update text fields with selected accommodation info
+    // Set the basic accommodation info
     txtAccommNumber.setText(selectedAccommodation.getAccommodationNumber());
     txtAccommType.setText(selectedAccommodation.getAccommodationType());
+
+    // Get the underlying Accommodation object
+    Accommodation accommodation = selectedAccommodation.getAccommodation();
+    
+    // If the accommodation has a customer, populate the check-in fields
+    if (accommodation.getCustomer() != null) {
+        Customer customer = accommodation.getCustomer();
+        FirstNameField.setText(customer.getFirstName());
+        LastNameField.setText(customer.getLastName());
+        // Assuming your Customer class has a getTelephone() method:
+        TeleNumField.setText(customer.getMobileNo());
+    } else {
+        // Clear fields if there is no customer
+        FirstNameField.clear();
+        LastNameField.clear();
+        TeleNumField.clear();
+    }
+    
+    // If a rental agreement exists, populate check-in date, nights, and guest count
+    if (accommodation.getRentalAgreement() != null) {
+        RentalAgreement rentalAgreement = accommodation.getRentalAgreement();
+        CheckInDateField.setText(String.valueOf(rentalAgreement.getcheckinDate()));
+        NightsField.setText(String.valueOf(rentalAgreement.getnumberofNights()));
+        GuestsField.setText(String.valueOf(rentalAgreement.getnumberofGuests()));
+    } else {
+        CheckInDateField.clear();
+        NightsField.clear();
+        GuestsField.clear();
+    }
 }
     
 private void populateTable(Area area) {
@@ -206,7 +231,7 @@ private void populateTable(Area area) {
         AccommodationRow accommodationRow = new AccommodationRow(
             accommodation.getAccommodationName(),
             accommodation.getAccommodationDescription(),
-            accommodation.getCustomer() != null ? accommodation.getCustomer().getFirstName() + " " + accommodation.getCustomer().getLastName() : "No customer"
+            accommodation.getCustomer() != null ? accommodation.getCustomer().getFirstName() + " " + accommodation.getCustomer().getLastName() : "No customer",
             accommodation
         );
 
@@ -369,11 +394,8 @@ private void CheckInOnAction(ActionEvent event) {
     Accommodation selectedAccommodation = selectedRow.getAccommodation();
     selectedAccommodation.setCustomer(customer);
     selectedAccommodation.setRentalAgreement(rentalAgreement);
-    
     // update the occupancy status
     selectedAccommodation.setOccupancy(true);
-    // update the cleaning status
-    selectedAccommodation.setCleaningStatus(CleaningStatus.Status.DIRTY);
     // update the availiablitly
     selectedAccommodation.setAvailability(false);
     selectedAccommodation.setGuests(numberOfGuests);
