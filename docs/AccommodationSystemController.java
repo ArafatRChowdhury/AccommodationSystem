@@ -1,9 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
-package groupproject.accommodationsystem;
-
+package cedarwoodsaccommodationsystem.gui;
+        
+import cedarwoodsaccommodationsystem.model.Accommodation;
+import cedarwoodsaccommodationsystem.model.AccommodationRow;
+import cedarwoodsaccommodationsystem.model.Area;
+import cedarwoodsaccommodationsystem.model.CedarWoodsAccommodationSystem;
+import cedarwoodsaccommodationsystem.model.CleaningStatus;
+import cedarwoodsaccommodationsystem.model.Customer;
+import cedarwoodsaccommodationsystem.model.RentalAgreement;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -108,7 +111,7 @@ public class AccommodationSystemController implements Initializable {
     
     private ObservableList<Area> areaData = FXCollections.observableArrayList();
     
-    private ObservableList<AccommodationRow> tableData = FXCollections.observableArrayList();
+    private final ObservableList<AccommodationRow> tableData = FXCollections.observableArrayList();
     
     
 
@@ -141,6 +144,9 @@ public class AccommodationSystemController implements Initializable {
         
         TableColumn typeCol = new TableColumn("Accomm Type");
         typeCol.setMinWidth(100);
+
+        TableColumn customercol = new TableColumn("Customer Name");
+        customercol.setMinWidth(100);
         
         TableColumn OccupanCol = new TableColumn("Occupancy");
         OccupanCol.setMinWidth(100);
@@ -157,14 +163,15 @@ public class AccommodationSystemController implements Initializable {
         TableColumn breakfastCol = new TableColumn("Breakfast");
         breakfastCol.setMinWidth(100);
         
-        AccommodationTable.getColumns().addAll(accommNoCol, typeCol, OccupanCol, availableCol, statusCol, guestCol, breakfastCol);
-        
-        accommNoCol.setCellValueFactory(new PropertyValueFactory<AccommodationRow, String>("accommodationNumber"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<AccommodationRow, String>("accommodationType"));
+        AccommodationTable.getColumns().addAll(accommNoCol, typeCol, customercol, OccupanCol, availableCol, statusCol, guestCol, breakfastCol);
+
+        accommNoCol.setCellValueFactory(new PropertyValueFactory<>("accommodationNumber"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("accommodationType"));
+        customercol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         OccupanCol.setCellValueFactory(new PropertyValueFactory<>("occupancy"));
         availableCol.setCellValueFactory(new PropertyValueFactory<>("availability"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
-        guestCol.setCellValueFactory(new PropertyValueFactory<>("guest"));
+        guestCol.setCellValueFactory(new PropertyValueFactory<>("guests"));
         breakfastCol.setCellValueFactory(new PropertyValueFactory<>("breakfast"));
        
         // tblRoomDetails.setSelectionModel(SelectionMode.SINGLE);
@@ -188,25 +195,26 @@ public class AccommodationSystemController implements Initializable {
     txtAccommType.setText(selectedAccommodation.getAccommodationType());
 }
     
-    private void populateTable(Area area)
-    {
-        System.out.println("Populate Table Called");
-        
-        tableData.clear();
-        
-        ArrayList<Accommodation> accommodations = area.getAccommodations();
+private void populateTable(Area area) {
+    System.out.println("Populate Table Called");
 
-        for (Accommodation accommodation : accommodations) 
-        {
-            AccommodationRow accommodationRow = new AccommodationRow(accommodation.getAccommodationName(),
-                                                                     accommodation.getAccommodationDescription(),
-                                                                     accommodation);
+    tableData.clear();
 
-            tableData.add(accommodationRow);
-        }
+    ArrayList<Accommodation> accommodations = area.getAccommodations();
 
-        AccommodationTable.setItems(tableData);
+    for (Accommodation accommodation : accommodations) {
+        AccommodationRow accommodationRow = new AccommodationRow(
+            accommodation.getAccommodationName(),
+            accommodation.getAccommodationDescription(),
+            accommodation.getCustomer() != null ? accommodation.getCustomer().getLastName() + accommodation.getCustomer().getFirstName() + " " : "No customer",
+            accommodation
+        );
+
+        tableData.add(accommodationRow);
     }
+
+    AccommodationTable.setItems(tableData);
+}
     
     private void showAreaStatistics(Area area) {
     int numBreakfasts = area.getNumBreakfasts();
@@ -308,10 +316,84 @@ public class AccommodationSystemController implements Initializable {
     }
 
 
-    @FXML
-    private void CheckInOnAction(ActionEvent event) {
-        
+@FXML
+private void CheckInOnAction(ActionEvent event) {
+    // Get customer information from the UI
+    String firstName = FirstNameField.getText();
+    String lastName = LastNameField.getText();
+    String teleNum = TeleNumField.getText();
+    String guests = GuestsField.getText();
+    String checkInDate = CheckInDateField.getText();
+    String nights = NightsField.getText();
+
+    // Validate inputs
+    if (firstName.isEmpty() || lastName.isEmpty() || teleNum.isEmpty() || guests.isEmpty() || checkInDate.isEmpty() || nights.isEmpty()) {
+        showAlert("Error", "Please fill in all fields.", Alert.AlertType.ERROR);
+        return;
     }
+
+    // Validate teleNum to ensure it contains only digits
+    if (!teleNum.matches("\\d+")) {
+        showAlert("Error", "Telephone number must contain only digits.", Alert.AlertType.ERROR);
+        return;
+    }
+
+    // Validate guests and nights to ensure they are valid integers
+    int numberOfGuests;
+    int numberOfNights;
+    try {
+        numberOfGuests = Integer.parseInt(guests);
+        numberOfNights = Integer.parseInt(nights);
+    } catch (NumberFormatException e) {
+        showAlert("Error", "Number of guests and nights must be valid integers.", Alert.AlertType.ERROR);
+        return;
+    }
+
+    // Create a Customer object
+    Customer customer = new Customer(firstName, lastName, teleNum);
+
+    // Get the selected accommodation from the table
+    AccommodationRow selectedRow = AccommodationTable.getSelectionModel().getSelectedItem();
+    if (selectedRow == null) {
+        showAlert("Error", "Please select an accommodation.", Alert.AlertType.ERROR);
+        return;
+    }
+
+    // Parse numeric fields
+    boolean breakfastRequired = BreakfastsRequired.isSelected();
+
+    // Create a RentalAgreement object
+    RentalAgreement rentalAgreement = new RentalAgreement(customer, breakfastRequired, Integer.parseInt(checkInDate), numberOfGuests, numberOfNights);
+
+    // Assign the customer and rental agreement to the selected accommodation
+    Accommodation selectedAccommodation = selectedRow.getAccommodation();
+    selectedAccommodation.setCustomer(customer);
+    selectedAccommodation.setRentalAgreement(rentalAgreement);
+    
+    // update the occupancy status
+    selectedAccommodation.setOccupancy(true);
+    // update the cleaning status
+    selectedAccommodation.setCleaningStatus(CleaningStatus.Status.DIRTY);
+    // update the availiablitly
+    selectedAccommodation.setAvailability(false);
+    selectedAccommodation.setGuests(numberOfGuests);
+    
+
+    // Update the table to reflect the changes
+    populateTable(AreaComboBox.getValue());
+
+    // Show success message
+    showAlert("Success", "Check-in completed successfully.", Alert.AlertType.INFORMATION);
+}
+
+private void showAlert(String title, String message, Alert.AlertType alertType) {
+    Alert alert = new Alert(alertType);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+}
+
 
     @FXML
     private void CheckOutOnAction(ActionEvent event) {
