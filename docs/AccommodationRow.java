@@ -1,4 +1,4 @@
-package cedarwoodsaccommodationsystem.model;
+package groupproject.accommodationsystem;
 
 import javafx.beans.property.SimpleStringProperty;
 
