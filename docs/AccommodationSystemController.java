@@ -397,6 +397,35 @@ private void showAlert(String title, String message, Alert.AlertType alertType) 
 
     @FXML
     private void CheckOutOnAction(ActionEvent event) {
+    // Get the selected accommodation from the table
+    AccommodationRow selectedRow = AccommodationTable.getSelectionModel().getSelectedItem();
+    if (selectedRow == null) {
+        showAlert("Error", "Please select an accommodation to check out.", Alert.AlertType.ERROR);
+        return;
     }
+
+    Accommodation selectedAccommodation = selectedRow.getAccommodation();
+
+    // Reset everything to default
+    selectedAccommodation.setCustomer(null);                
+    selectedAccommodation.setRentalAgreement(null);         
+    selectedAccommodation.setOccupancy(false);              
+    selectedAccommodation.setAvailability(true);           
+    selectedAccommodation.resetGuests();                    
+    selectedAccommodation.setBreakfast(false);            
+    selectedAccommodation.setCleaningStatus(CleaningStatus.Status.DIRTY); 
+
+    populateTable(AreaComboBox.getValue());
+
+    FirstNameField.clear();
+    LastNameField.clear();
+    TeleNumField.clear();
+    GuestsField.clear();
+    CheckInDateField.clear();
+    NightsField.clear();
+    BreakfastsRequired.setSelected(false);
+
+    showAlert("Success", "Check-out completed successfully.", Alert.AlertType.INFORMATION);
+}
     
 }
