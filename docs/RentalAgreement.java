@@ -1,12 +1,12 @@
 package groupproject.accommodationsystem;
 public class RentalAgreement {
-   private String customer;
+   private Customer customer;
    private boolean breakfast;
    private int checkinDate;
    private int numberofGuests;
    private int numberofNights;
     
-public RentalAgreement(boolean breakfast, int checkinDate, int numberofGuests, int numberofNights){
+public RentalAgreement(Customer customer, boolean breakfast, int checkinDate, int numberofGuests, int numberofNights){
     this.breakfast = breakfast;
     this.checkinDate = checkinDate;
     this.numberofGuests = numberofGuests;
