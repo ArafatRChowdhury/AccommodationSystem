@@ -1,4 +1,4 @@
-package cedarwoodsaccommodationsystem.model;
+package groupproject.accommodationsystem;
 
 public class Accommodation {
     private String accommodationName;
@@ -82,11 +82,10 @@ public class Accommodation {
         }
         return 0;
      }
-    
-    public void resetGuests() {
+     public void resetGuests() {
         this.guests = 0;
     }
-    
+
     public void setOccupancy(boolean occupancy) {
         this.occupancy = occupancy;
     }
