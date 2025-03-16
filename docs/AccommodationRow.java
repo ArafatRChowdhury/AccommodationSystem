@@ -1,20 +1,21 @@
-package groupproject.accommodationsystem;
+package cedarwoodsaccommodationsystem.model;
 
 import javafx.beans.property.SimpleStringProperty;
 
 public class AccommodationRow {
-    private SimpleStringProperty accommodationNumber;
-    private SimpleStringProperty accommodationType;
-    private Accommodation accommodation;
-    
-    public AccommodationRow(String accommodationNumber, 
-                              String accommodationType,
-                              Accommodation accommodation) {
+    private final SimpleStringProperty accommodationNumber;
+    private final SimpleStringProperty accommodationType;
+    private final SimpleStringProperty customerName;
+    private final Accommodation accommodation;
+
+    public AccommodationRow(String accommodationNumber, String accommodationType, String customerName, Accommodation accommodation) {
         this.accommodationNumber = new SimpleStringProperty(accommodationNumber);
         this.accommodationType = new SimpleStringProperty(accommodationType);
+        this.customerName = new SimpleStringProperty(customerName);
         this.accommodation = accommodation;
     }
 
+    // Getters for properties
     public String getAccommodationNumber() {
         return accommodationNumber.get();
     }
@@ -22,33 +23,32 @@ public class AccommodationRow {
     public String getAccommodationType() {
         return accommodationType.get();
     }
-    
+
+    public String getCustomerName() {
+        return customerName.get();
+    }
+
     public Accommodation getAccommodation() {
         return accommodation;
     }
-    
-    // Additional getters to support extra table columns
+
     public String getOccupancy() {
-    // e.g., if `accommodation.getOccupancy()` returns a boolean:
-    return accommodation.getOccupancy() ? "Occupied" : "Unoccupied";
+        return accommodation.getOccupancy() ? "Occupied" : "Unoccupied";
     }
-    
+
     public String getAvailability() {
-    return accommodation.getAvailability() ? "Available" : "Unavailable";
+        return accommodation.getAvailability() ? "Available" : "Unavailable";
     }
-    
+
     public String getStatus() {
-        // Assumes Accommodation has a method getStatus()
         return accommodation.getCleaningStatus().name();
     }
-    
-    public String getGuest() {
-        // Assumes Accommodation has a method getGuest()
+
+    public String getGuests() {
         return Integer.toString(accommodation.getGuests());
     }
 
-    
     public String getBreakfast() {
-    return accommodation.getBreakfast() ? "Yes" : "No";
+        return accommodation.getBreakfast() ? "Yes" : "No";
     }
 }
