@@ -363,7 +363,7 @@ private void CheckInOnAction(ActionEvent event) {
     boolean breakfastRequired = BreakfastsRequired.isSelected();
 
     // Create a RentalAgreement object
-    RentalAgreement rentalAgreement = new RentalAgreement(breakfastRequired, Integer.parseInt(checkInDate), numberOfGuests, numberOfNights);
+    RentalAgreement rentalAgreement = new RentalAgreement(customer, breakfastRequired, Integer.parseInt(checkInDate), numberOfGuests, numberOfNights);
 
     // Assign the customer and rental agreement to the selected accommodation
     Accommodation selectedAccommodation = selectedRow.getAccommodation();
