@@ -1,0 +1,7 @@
+Guide
+
+In netbeans, create a project and set it up so javafx is set up. Move the source files into a package named "groupproject.accommodationsystem". Make sure that the CedarWoodsAccommodationGUI file is the main class that runs on project start.
+
+When the application is running, the accommodations will not be shown in the table - you have to select an area from the choice box menu in the top right. After that, you can select an accommodation, and input the customer details. Make sure that everything is valid. Something to note is that the telephone number cannot exceed 10 digits. You can then press the check in button to create a booking.
+
+When selecting an accommodation, you can also change it's cleaning status to clean, dirty or maintenance. The cleaning status will automatically become dirty when a customer checks out. If an accommodation is either dirty or under maintenance, the table will show that the accommodation is unavailable.
